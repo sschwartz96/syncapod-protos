@@ -59,11 +59,6 @@ service Auth {
 	rpc CreateAccount(CreateAccountReq) returns (CreateAccountRes) { }
 	rpc ResetPassword(ResetPasswordReq) returns (ResetPasswordRes) { }
 	rpc Authenticate(AuthenticateReq) returns (AuthenticateRes) { }
-	/* rpc Authorize(AuthorizeReq) returns (AuthorizeRes) { */
-	/* 	option (google.api.http) = { */
-	/* 		post: "/v1/auth/authorize" */
-	/* 		body: "*" */
-	/* 	}; */
-	/* } */
+	rpc Authorize(AuthorizeReq) returns (AuthorizeRes) { }
 	rpc Logout(LogoutReq) returns (LogoutRes) { }
 }
