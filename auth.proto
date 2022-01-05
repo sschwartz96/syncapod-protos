@@ -42,21 +42,26 @@ message CreateAccountReq {
 	bool acceptTerms = 5;
 }
 
-// CreateAccountRes sends back an error message (if any)
-message CreateAccountRes {
-	string error = 1;
-}
+// CreateAccountRes emtpy response on success, error message on failure
+message CreateAccountRes { }
 
 message ResetPasswordReq {
 	string email = 1;
 }
 
-message ResetPasswordRes {
-	string error = 1;
+message ResetPasswordRes { }
+
+// ActivateReq takes an activation token to verify against database, if valid then the account is then activated
+message ActivateReq {
+	string token = 1;
 }
+
+// ActivateRes returns empty result if success, error otherwise
+message ActivateRes {  }
 
 service Auth {
 	rpc CreateAccount(CreateAccountReq) returns (CreateAccountRes) { }
+	rpc Activate(ActivateReq) returns (ActivateRes) { }
 	rpc ResetPassword(ResetPasswordReq) returns (ResetPasswordRes) { }
 	rpc Authenticate(AuthenticateReq) returns (AuthenticateRes) { }
 	rpc Authorize(AuthorizeReq) returns (AuthorizeRes) { }
